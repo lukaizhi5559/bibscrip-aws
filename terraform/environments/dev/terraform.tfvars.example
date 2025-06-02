@@ -1,0 +1,65 @@
+# General Settings
+project_name    = "bibscrip"
+environment     = "dev"
+aws_region      = "us-west-2"
+domain_name     = "dev.bibscrip.com"
+route53_zone_id = "Z123456789ABCDEFGHIJ"
+
+# Network settings
+vpc_cidr             = "10.0.0.0/16"
+availability_zones   = ["us-west-2a", "us-west-2b", "us-west-2c"]
+
+# SSL/TLS
+acm_certificate_arn  = "arn:aws:acm:us-east-1:123456789012:certificate/abcd1234-efgh-5678-ijkl-9012mnopqrst"
+
+# Backend API settings
+backend_container_image = "123456789012.dkr.ecr.us-west-2.amazonaws.com/bibscrip-dev-backend:latest"
+backend_container_port  = 8080
+backend_container_cpu   = 512
+backend_container_memory = 1024
+backend_desired_count   = 2
+backend_min_count       = 1
+backend_max_count       = 4
+backend_ecr_repository_uri = "123456789012.dkr.ecr.us-west-2.amazonaws.com/bibscrip-dev-backend"
+
+# Frontend settings
+eb_solution_stack_name = "64bit Amazon Linux 2023 v6.0.2 running Node.js 20"
+eb_instance_type       = "t3.small"
+eb_min_instances       = 1
+eb_max_instances       = 2
+cloudfront_price_class = "PriceClass_100"
+
+# Database settings
+rds_instance_class    = "db.t3.small"
+rds_storage_size      = 20
+rds_engine_version    = "15.4"
+redis_node_type       = "cache.t3.small"
+redis_engine_version  = "7.0"
+redis_parameter_group_name = "default.redis7"
+dynamodb_billing_mode = "PAY_PER_REQUEST"
+
+# Lambda settings
+lambda_bible_lookup_zip_path = "lambda/bible-lookup.zip"
+lambda_memory_size     = 512
+lambda_timeout         = 30
+lambda_daily_cleanup_zip_path = "lambda/daily-cleanup.zip"
+lambda_try_primary_ai_zip_path = "lambda/try-primary-ai.zip"
+lambda_try_secondary_ai_zip_path = "lambda/try-secondary-ai.zip"
+lambda_try_tertiary_ai_zip_path = "lambda/try-tertiary-ai.zip"
+lambda_secret_rotation_zip_path = "lambda/secret-rotation.zip"
+lambda_deployment_notification_zip_path = "lambda/deployment-notification.zip"
+
+# API keys - IMPORTANT: Do not commit actual API keys to source control!
+# These should be set via environment variables or AWS SSM Parameter Store
+openai_api_key = ""
+claude_api_key = ""
+gemini_api_key = ""
+
+# CI/CD settings
+github_repository = "your-github-username/bibscrip"
+deployment_notification_emails = ["devops@example.com"]
+
+# Monitoring settings
+alert_email = "alerts@example.com"
+monthly_budget_amount = 100
+budget_notification_emails = ["finance@example.com", "devops@example.com"]
